@@ -7,15 +7,33 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
-Airport.create(airport_code: 'NYC')
+Airport.delete_all
+Flight.delete_all
 
-Airport.create(airport_code: 'SFO')
+nyc = Airport.create!(airport_code: 'NYC')
 
-Airport.create(airport_code: 'LAX')
+sfo = Airport.create!(airport_code: 'SFO')
+
+lax = Airport.create!(airport_code: 'LAX')
 
 
-Flight.create(departure_airport_id: 1, arrival_airport_id: 2, start: Time.zone.local(2026, 6, 25, 6, 0, 0), duration: 120)
+Flight.create!(
+  departure_airport: nyc,
+  arrival_airport: sfo,
+  start: Time.zone.local(2026, 6, 25, 6, 0, 0),
+  duration: 120
+)
 
-Flight.create(departure_airport_id: 2, arrival_airport_id: 3, start: Time.zone.local(2026, 6, 26, 7, 0, 0), duration: 120)
+Flight.create!(
+  departure_airport: sfo,
+  arrival_airport: lax,
+  start: Time.zone.local(2026, 6, 26, 7, 0, 0),
+  duration: 120
+)
 
-Flight.create(departure_airport_id: 3, arrival_airport_id: 1, start: Time.zone.local(2026, 6, 27, 7, 0, 0), duration: 120)
+Flight.create!(
+  departure_airport: lax,
+  arrival_airport: nyc,
+  start: Time.zone.local(2026, 6, 27, 7, 0, 0),
+  duration: 120
+)
