@@ -1,0 +1,27 @@
+<h1>Search Flights</h1>
+
+<%= form_with url: flights_path, method: :get, local: true do |f| %>
+
+  <div>
+    <%= f.label :departure_airport_id, "From" %>
+    <%= f.select :departure_airport_id, [] %>
+  </div>
+
+  <div>
+    <%= f.label :arrival_airport_id, "To" %>
+    <%= f.select :arrival_airport_id, [] %>
+  </div>
+
+  <div>
+    <%= f.label :passengers, "Passengers" %>
+    <%= f.select :passengers, [] %>
+  </div>
+
+  <div>
+    <%= f.label :date, "Date" %>
+    <%= f.select :date, [] %>
+  </div>
+
+  <%= f.submit "Search" %>
+
+<% end %>
