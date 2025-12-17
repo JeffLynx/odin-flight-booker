@@ -4,22 +4,30 @@
 
   <div>
     <%= f.label :departure_airport_id, "From" %>
-    <%= f.select :departure_airport_id, [] %>
+    <%= f.select :departure_airport_id,
+      options_from_collection_for_select(@airports, :id, :airport_code),
+      prompt: "Select departure airport" %>
   </div>
 
   <div>
     <%= f.label :arrival_airport_id, "To" %>
-    <%= f.select :arrival_airport_id, [] %>
+    <%= f.select :arrival_airport_id,
+      options_from_collection_for_select(@airports, :id, :airport_code),
+      prompt: "Select arrival airport" %>
   </div>
 
   <div>
     <%= f.label :passengers, "Passengers" %>
-    <%= f.select :passengers, [] %>
+    <%= f.select :passengers,
+      options_for_select(@passenger_options),
+      prompt: "Number of passengers" %>
   </div>
 
   <div>
     <%= f.label :date, "Date" %>
-    <%= f.select :date, [] %>
+    <%= f.select :date,
+      options_for_select(@flight_dates.map { |d| [d.strftime("%Y-%m-%d"), d] }),
+      prompt: "Select date"%>
   </div>
 
   <%= f.submit "Search" %>
