@@ -37,28 +37,33 @@
 
   <% if @flights.present? %>
     <h2>Available Flights</h2>
-      
+
     <%= form_with url: new_booking_path, method: :get, local: true do %>
+      <div class="flight-results">
+
+        <% @flights.each do |flight| %>
+          <label class="flight-card">
+            <%= radio_button_tag :flight_id, flight.id %>
+
+            <div class="flight-info">
+              <strong>
+                <%= flight.departure_airport.airport_code %>
+                ➡
+                <%= flight.arrival_airport.airport_code %>
+              </strong>
+              |
+              <span>
+                <%= flight.start.strftime("%Y-%m-%d %H:%M") %>
+                <%= flight.duration %> minutes
+              </span>
+            </div>
+          </label>
+        <% end %>
+
+      </div>
 
       <%= hidden_field_tag :passengers, params[:passengers] %>
-
-      <% @flights.each do |flight| %>
-        <div>
-          <%= radio_button_tag :flight_id, flight.id %>
-
-          <%= flight.departure_airport.airport_code %>
-
-          <%= flight.arrival_airport.airport_code %>
-
-          |
-          <%= flight.start.strftime("%Y-%m-%d %H:%M") %>
-          |
-          <%= flight.duration %> minutes
-        </div>
-      <% end %>
-
-      <%= submit_tag "Choose Flight" %>
-      
+      <%= submit_tag "Choose Flight", class: "button primary" %>
     <% end %>
   <% end %>
 </div>

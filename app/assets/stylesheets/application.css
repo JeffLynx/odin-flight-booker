@@ -61,3 +61,58 @@ select {
   border: 1px solid #ccc;
   font-size: 0.95rem;
 }
+
+h2 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.flight-results {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.flight-card {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  background: white;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.flight-card:hover {
+  border-color: #2563eb;
+}
+
+.flight-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.flight-info span {
+  font-size: 0.85rem;
+  color: #255;
+}
+
+.button {
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+}
+
+.button.primary {
+  background-color: #2563eb;
+  color: white;
+}
+
+.button.primary:hover {
+  background-color: #1d4ed8;
+}
